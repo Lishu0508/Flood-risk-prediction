@@ -29,9 +29,8 @@ plt.show()
 # training data
 flood_train = pd.read_csv('./flood_train.csv')
 # test data
-flood_test2_1 = pd.read_csv('./flood_test.csv')
-# flood_test1 = np.array(flood_test1)
-flood_test2_1 = np.array(flood_test2_1)
+flood_test = pd.read_csv('./flood_test.csv')
+flood_test = np.array(flood_test)
 # Shortcut for learning all the parameters and adding the CPDs to the model.
 
 flood_model.fit(
@@ -41,9 +40,10 @@ flood_model.fit(
     equivalent_sample_size=1000,
 )
 
+# predict Fld of flood_test
 values = pd.DataFrame(index=range(1),
                       columns=['Elev','Popd','Impe','Ra','GDP','Road','Rivd','Driv','Pipd','Dpip','Slop'])
 
-values.iloc[:, :] = flood_test2_1[:, :]
+values.iloc[:, :] = flood_test[:, :]
 y_pred = flood_model.predict_probability(values)
 y_pred.to_csv('Fld_pred.csv', index=False)
