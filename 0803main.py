@@ -41,7 +41,7 @@ flood_model.fit(
 )
 
 # predict Fld of flood_test
-values = pd.DataFrame(index=range(1),
+values = pd.DataFrame(index=range(16740),
                       columns=['Elev','Popd','Impe','Ra','GDP','Road','Rivd','Driv','Pipd','Dpip','Slop'])
 
 values.iloc[:, :] = flood_test[:, :]
